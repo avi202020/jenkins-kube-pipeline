@@ -32,6 +32,7 @@ spec:
                 container('busybox') {
                     sh '/bin/busybox'
                 }
+                sh "echo 'Run in default container'"
             }
         }
     }
