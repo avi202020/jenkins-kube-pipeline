@@ -24,15 +24,23 @@ spec:
         }
     }
     stages {
-        stage('Run maven') {
+        stage('Run in Maven container') {
             steps {
                 container('maven') {
                     sh 'mvn -version'
                 }
+            }
+        }
+        stage('Run in Busybox container') {
+            steps {
                 container('busybox') {
                     sh '/bin/busybox'
                 }
-                sh "echo 'Run in default container'"
+            }
+        }
+        stage('Run in default container') {
+            steps {
+                sh "echo 'Running in default container'"
             }
         }
     }
